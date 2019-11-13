@@ -41,3 +41,14 @@ for line in data:
 	if 'good' in line:
 		good.append(line)
 print('一共有', len(good), '則留言提到good')
+
+
+#快寫法
+good = [line for line in data if 'good' in line]
+print(good)
+
+good = [1 for line in data if 'good' in line]
+print(good)
+
+good = ['good' in line for line in data]
+print(good)
