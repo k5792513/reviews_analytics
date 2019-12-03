@@ -4,7 +4,7 @@ with open('reviews.txt', 'r') as f:
 	for line in f:
 		data.append(line)
 		count += 1 #count = count + 1
-		if count % 1000 == 0: # %是餘數
+		if count % 10000 == 0: # %是餘數
 			print(len(data))
 print('終於印完了！總共有', len(data), '筆資料')
 
@@ -52,3 +52,31 @@ print(good)
 
 good = ['good' in line for line in data]
 print(good)
+
+
+#文字計數
+wc = {} # wc = word_count
+for d in data:
+	words = d.split()
+	for word in words:
+		if word in wc:
+			wc[word] += 1
+		else: 
+			wc[word] = 1
+
+for word in wc:
+	if wc[word] > 200:
+		print(word, wc[word])
+
+print(len(wc))
+print(wc['Allen'])
+
+while True:
+	word = input('請輸入想查詢單字： ')
+	if word == 'q':
+		break
+	elif word in wc:
+		print(word, '這個字出現過', wc[word], '次')
+	else:
+		print('沒有', word, '這個字')
+print('感謝您使用本查詢功能')
